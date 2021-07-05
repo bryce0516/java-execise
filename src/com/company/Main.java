@@ -33,6 +33,11 @@ public class Main {
         dog.eat();
 //        dog.walk();
         dog.run();
+        Test rex = new Test("rex");
+        Test fluffy = new Test("fluffy");
+        rex.printName();
+        fluffy.printName();
+
 
     }
 
