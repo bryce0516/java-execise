@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-//        int score = 800;
-//        calculate(score);
-//        SpeedConverter.printConversion();
+    // int score = 800;
+    // calculate(score);
+    // SpeedConverter.printConversion();
         Car porsche = new Car();
         Car holden = new Car();
         porsche.setModel("Carrera");
@@ -15,11 +15,11 @@ public class Main {
 
         Account bobsAccount = new Account("12345", 0.00, "Bob Brown", "myemail@bob.com", "123-4567");
 //
-//        bobsAccount.withdrawal(100.0);
-//        bobsAccount.deposit(50.0);
-//        bobsAccount.withdrawal(100.0);
-//        bobsAccount.deposit(51);
-//        bobsAccount.withdrawal(100);
+// bobsAccount.withdrawal(100.0);
+// bobsAccount.deposit(50.0);
+// bobsAccount.withdrawal(100.0);
+// bobsAccount.deposit(51);
+// bobsAccount.withdrawal(100);
         vipCustomer person1 = new vipCustomer();
         System.out.println(person1.getName());
         vipCustomer person2 = new vipCustomer(0.00, "person2@email.com");
@@ -38,6 +38,22 @@ public class Main {
         rex.printName();
         fluffy.printName();
 
+        Outlander outlander = new Outlander(36);
+        outlander.steer(45);
+        outlander.accelrate(30);
+        outlander.accelrate(20);
+        outlander.accelrate(-42);
+        Dimentions dimentions = new Dimentions(20, 20, 5);
+        Case theCase = new Case("220B", "Dell", "240", dimentions);
+
+        Monitor theMonitor = new Monitor("27inch Beast", "Acer", 27, new Resolution(2540, 1440));
+
+        Motherboard theMotherboard = new Motherboard("BJ-200", "Asus", 4, 6, "v2.44");
+
+        PC thePC = new PC(theCase, theMonitor, theMotherboard);
+        thePC.getMonitor().drawPixelAt(1500, 1200, "red");
+        thePC.getMotherboard().loadProgram("Windows 1.0");
+        thePC.getTheCase().pressPowerButton();
 
     }
 
