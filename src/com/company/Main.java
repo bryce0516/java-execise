@@ -53,20 +53,43 @@ public class Main {
         PC thePC = new PC(theCase, theMonitor, theMotherboard);
         thePC.powerUp();
 
-        Wall wall1 = new Wall("west");
-        Wall wall2 = new Wall("east");
-        Wall wall3 = new Wall("South");
-        Wall wall4 = new Wall("North");
+//        Wall wall1 = new Wall("west");
+//        Wall wall2 = new Wall("east");
+//        Wall wall3 = new Wall("South");
+//        Wall wall4 = new Wall("North");
+//
+//        Ceiling ceiling = new Ceiling(12,55);
+//
+//        Bed bed = new Bed("Modern", 4,3,2,1);
+//
+//        Lamp lamp = new Lamp("Classic", false, 75);
+//
+//        Bedroom bedRoom = new Bedroom("Tims", wall1,wall2,wall3,wall4,ceiling,bed,lamp);
+//        bedRoom.makeBed();
+//        bedRoom.getLamp().turnOn();
 
-        Ceiling ceiling = new Ceiling(12,55);
+//        Player player = new Player();
+//        player.name="tim";
+//        player.health=20;
+//        player.weapon="Sword";
+//        int damage = 10;
+//
+//        player.loseHealth(damage);
+//        player.loseHealth(damage);
+//        player.healthRemaining();
+//
+//        EnhancedPlayer ePlayer = new EnhancedPlayer("time", 50, "axe");
+//        System.out.println("Initial health is "+ ePlayer.getHealth());
+        Printer printer = new Printer(50, false);
+        System.out.println("initial page count = " + printer.getPagesPrinted());
+        int pagesPrinted = printer.printPages(4);
+        System.out.println("pages printed was " + pagesPrinted + " new total print count for pinter = " + printer.getPagesPrinted());
 
-        Bed bed = new Bed("Modern", 4,3,2,1);
+        pagesPrinted = printer.printPages(2);
+        System.out.println("pages printed was " + pagesPrinted + " new total print count for pinter = " + printer.getPagesPrinted());
 
-        Lamp lamp = new Lamp("Classic", false, 75);
 
-        Bedroom bedRoom = new Bedroom("Tims", wall1,wall2,wall3,wall4,ceiling,bed,lamp);
-        bedRoom.makeBed();
-        bedRoom.getLamp().turnOn();
+
     }
 
     public static void calculate (int score) {
