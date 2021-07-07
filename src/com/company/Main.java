@@ -1,5 +1,10 @@
 package com.company;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -88,7 +93,21 @@ public class Main {
         pagesPrinted = printer.printPages(2);
         System.out.println("pages printed was " + pagesPrinted + " new total print count for pinter = " + printer.getPagesPrinted());
 
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/it/Workspace/ByteShortIntLoing/src/com/company/TestDB/testjava.db");
+//            conn.setAutoCommit(false);
+            Statement statement = conn.createStatement();
+            System.out.println("Nothing is wrong ");
 
+            statement.execute("CREATE TABLE IF NOT EXISTS contacts (name TEXT, phone INTEGER, email TEXT)");
+            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jim', 523523,'jim@email.com')");
+            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jane', 523523,'jane@email.com')");
+            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Shaun', 523523,'shaun@email.com')");
+            statement.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
 
     }
 
