@@ -1,13 +1,18 @@
 package com.company;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 
 public class Main {
+    public static final String DB_NAME = "testjava.db";
+    public static final String CONNECTION_STRING = "jdbc:sqlite:/Users/it/Workspace/ByteShortIntLoing/src/com/company/TestDB/" + DB_NAME;
 
-    public static void main(String[] args) {
+    public static final String TABLE_CONTACTS = "contacts";
+    public static final String COLUMN_NAME= "name";
+    public static final String COLUMN_PHONE= "phone";
+    public static final String COLUMN_EMAIL= "email";
+
+     public static void main(String[] args) {
 	// write your code here
     // int score = 800;
     // calculate(score);
@@ -94,21 +99,42 @@ public class Main {
         System.out.println("pages printed was " + pagesPrinted + " new total print count for pinter = " + printer.getPagesPrinted());
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/it/Workspace/ByteShortIntLoing/src/com/company/TestDB/testjava.db");
+            Connection conn = DriverManager.getConnection(CONNECTION_STRING);
 //            conn.setAutoCommit(false);
             Statement statement = conn.createStatement();
             System.out.println("Nothing is wrong ");
+            statement.execute("DROP TABLE IF EXISTS" + TABLE_CONTACTS);
 
-            statement.execute("CREATE TABLE IF NOT EXISTS contacts (name TEXT, phone INTEGER, email TEXT)");
-            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jim', 523523,'jim@email.com')");
-            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jane', 523523,'jane@email.com')");
-            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Shaun', 523523,'shaun@email.com')");
+            statement.execute("CREATE TABLE IF NOT EXISTS" +TABLE_CONTACTS +
+                    " (" + COLUMN_NAME + "text,  " +
+                    COLUMN_PHONE + "integer, " +
+                    COLUMN_EMAIL + "text" +
+                    ")");
+
+//            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jim', 523523,'jim@email.com')");
+//            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Jane', 523523,'jane@email.com')");
+//            statement.execute("INSERT INTO contacts (name, phone, email) VALUES('Shaun', 523523,'shaun@email.com')");
+//            statement.execute("UPDATE contacts SET phone=1111111 WHERE name='Jane'");
+
+//            statement.execute("SELECT * FROM contacts");
+//            ResultSet results = statement.getResultSet();
+            ResultSet results = statement.executeQuery("SELECT * FROM contacts");
+            while(results.next()){
+                System.out.println(results.getString("name") + " " +
+                        results.getInt("phone") + " " +
+                        results.getString("email"));
+            }
+
+            results.close();
             statement.close();
             conn.close();
         }catch(SQLException e){
             System.out.println("Something went wrong: " + e.getMessage());
         }
 
+    }
+    private static void insertContact(Statement statement, String name, int phone , String email){
+         
     }
 
     public static void calculate (int score) {
