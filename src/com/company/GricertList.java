@@ -42,12 +42,12 @@ public class GricertList {
   }
 
   public int findItem(String searchItem) {
-//    boolean exists = groceryList.contains(searchItem);
-//    int position = groceryList.indexOf(searchItem);
-//    if(position >= 0){
-//      return groceryList.get(position);
-//    }
-//    return null;
+    boolean exists = groceryList.contains(searchItem);
+    int position = groceryList.indexOf(searchItem);
+    if(position >= 0){
+      return groceryList.get(position);
+    }
+    return null;
 //    return groceryList.indexOf(searchItem);
   }
 }
