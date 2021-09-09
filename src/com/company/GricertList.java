@@ -18,23 +18,36 @@ public class GricertList {
     }
   }
 
+  public void modifyGroceryItem(String newItem){
+    int position = findItem(newItem);
+    if(position >= 0) {
+      modifyGroceryItem(position, newItem);
+    }
+  }
+
   public void modifyGroceryItem(int position, String newItem){
     groceryList.set(position, newItem);
     System.out.println("Grocery Item " + position+1 + " has been modified.");
   }
-
+  public void removeGroceryItem(String item){
+    int position = findItem(item);
+    if(position >= 0) {
+      removeGroceryItem(position);
+    }
+  }
   public void removeGroceryItem(int position){
     String theItem = groceryList.get(position);
     groceryList.remove(position);
 
   }
 
-  public String findItem(String searchItem) {
+  public int findItem(String searchItem) {
 //    boolean exists = groceryList.contains(searchItem);
-    int position = groceryList.indexOf(searchItem);
-    if(position >= 0){
-      return groceryList.get(position);
-    }
-    return null;
+//    int position = groceryList.indexOf(searchItem);
+//    if(position >= 0){
+//      return groceryList.get(position);
+//    }
+//    return null;
+//    return groceryList.indexOf(searchItem);
   }
 }
